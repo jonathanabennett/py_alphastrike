@@ -4,12 +4,12 @@ from record_sheet import RecordSheet
 window = Tk()
 
 locust = RecordSheet(
-    "Locust", 18, "BM", 1, 3, 8, "w", "Scout", 4, [1, 1, 0], 0, 2, 2, []
+    "Locust", 18, "BM", 1, 3, 8, None, "Scout", 4, [1, 1, 0], 0, 2, 2, []
 )
 
 window.title("Welcome to Alphastrike")
 
-name_lbl = Label(window, text=locust.name, font=("Arial Bold", 24))
+name_lbl = Label(window, text=locust.name, font=("Arial Bold", 50))
 name_lbl.grid(column=0, row=0)
 
 pv_lbl = Label(window, text=locust.pv)
@@ -22,7 +22,10 @@ size_lbl = Label(window, text=f"Size: {locust.size}")
 size_lbl.grid(column=1, row=1)
 tmm_lbl = Label(window, text=f"TMM: {locust.tmm}")
 tmm_lbl.grid(column=2, row=1)
-mv_lbl = Label(window, text=f"Mv: {locust.mv}{locust.move_type}")
+if locust.move_type:
+    mv_lbl = Label(window, text=f"Mv: {locust.mv}{locust.move_type}")
+else:
+    mv_lbl = Label(window, text=f"Mv: {locust.mv}")
 mv_lbl.grid(column=3, row=1)
 role_lbl = Label(window, text=f"Role: {locust.role}")
 role_lbl.grid(column=0, row=2)
@@ -36,7 +39,7 @@ damage_lbl.grid(column=0, row=3)
 ov_lbl = Label(window, text=f"OV: {locust.ov}")
 ov_lbl.grid(column=0, row=4)
 heat_lbl = Label(window, text=f"Current Heat: {locust.heat}")
-type_lbl.grid(column=1, row=4)
+heat_lbl.grid(column=1, row=4)
 armor_lbl = Label(window, text=f"Armor: {locust.cur_armor}/{locust.armor}")
 armor_lbl.grid(column=0, row=5)
 structure_lbl = Label(
